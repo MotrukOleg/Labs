@@ -76,25 +76,27 @@ class Stadium(Club):
 
 class Match:
 
-    def __new__(cls , match_date , match_time , stadium_id , amount_of_glories):
+    def __new__(cls , match_date , match_time ,home_team , away_team ,  stadium_id , amount_of_glories):
         instance = super().__new__(cls)
         return  instance
 
-    def __init__(self , match_date , match_time , stadium_id , amount_of_glories):
+    def __init__(self , match_date , match_time , home_team , away_team, stadium_id , amount_of_glories):
         self.match_date = match_date
         self.match_time = match_time
         self.stadium_id = stadium_id
         self.amount_of_glories = amount_of_glories
+        self.home_team = home_team
+        self.away_team = away_team
 
     match_list = dict()
     id = 1
 
     def set_match(self):
         if self.amount_of_glories < Stadium.get_capacity_by_id(self.stadium_id) and self.match_date not in Match.match_list.values():
-            Match.match_list[Match.id] = [self.match_date , self.match_time , self.stadium_id]
+            Match.match_list[Match.id] = [self.match_date , self.match_time , self.home_team , self.away_team ,  self.stadium_id]
             Match.id += 1
         else:
-            print("Stadium is full or match date is busy")
+            print(f"Stadium on {self.match_date} is full or match date is busy")
             return
 
     def display_info(self):
@@ -104,6 +106,15 @@ class Match:
         print("-------------------------------------------------------------")
         print(Fore.RESET)
 
+    @staticmethod
+    def show_matches():
+        print(Fore.GREEN + "-------------------------------------------------------------")
+        print("\t id         Plays          Date          Time       Stadium")
+        for key, value in Match.match_list.items():
+            match = list(value)
+            print(f"Match {key}: {match[2]} vs {match[3]} | {match[0]}  | {match[1]} | {Stadium.stadium_list[match[4]][0]}")
+        print("-------------------------------------------------------------")
+        print(Fore.RESET)
 
 class Coach(Club):
 
@@ -199,13 +210,12 @@ Player.show_players()
 stadium1 = Stadium("Dynamo", "Kyiv", "1927" , "NSC Olimpiyskiy", 70050)
 stadium1.stadium_add()
 
-match1 = Match("2021-10-10" , "20:00" , 1 , 70000)
+match1 = Match("2021-10-10" , "20:00" , club1.name , club2.name ,  1 , 70000)
 match1.set_match()
 
-match2 = Match("2021-10-10" , "21:00" , 1 , 80000)
+match2 = Match("2021-11-10" , "21:00" , club1.name , club3.name , 1 , 65000)
 match2.set_match()
-match1.display_info()
-match2.display_info()
+Match.show_matches()
 
 club1.display_info()
 

@@ -116,7 +116,19 @@ class Match:
         print("-------------------------------------------------------------")
         print(Fore.RESET)
 
-class Coach(Club):
+
+class Person:
+
+    def __new__(cls, name, age, height):
+        instance = super().__new__(cls)
+        return instance
+
+    def __init__(self, name, age, height):
+        self.name = name
+        self.age = age
+        self.height = height
+
+class Coach(Club , Person):
 
     def __new__(cls, name, city, foundation_year, coach_name, experience):
         instance = super().__new__(cls, name, city, foundation_year)
@@ -130,18 +142,6 @@ class Coach(Club):
     def display_info(self):
         print(f"Club: {self.name}, City: {self.city}, Foundation year: {self.foundation_year}")
         print(f"Coach: {self.coach_name}, Experience: {self.experience}")
-
-
-class Person:
-
-    def __new__(cls, name, age, height):
-        instance = super().__new__(cls)
-        return instance
-
-    def __init__(self, name, age, height):
-        self.name = name
-        self.age = age
-        self.height = height
 
 
 class Player(Person):
@@ -187,7 +187,7 @@ class Player(Person):
                 Player.player_list[key] = [self.name , self.age , self.height , int(club_id)]
 
 
-player_Dynamo = Player("Oleg", "18", "186")
+player_Dynamo = Player("Oleg ", "18", "186")
 player_Dynamo2 = Player("Vlad", "19", "190")
 player_Shahtar = Player("Vova", "20", "180")
 player_Shahtar2 = Player("Dima", "21", "175")

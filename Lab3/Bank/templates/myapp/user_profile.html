@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню користувача</title>
+</head>
+<body>
+
+    <div style="text-align: right;">
+        <p>Баланс: {{ request.session.balance }} грн</p>
+    </div>
+
+    <h1>Меню користувача</h1>
+    <div>
+        <button onclick="location.href='{% url 'transfer_funds' request.session.user_id %}'">Зробити транзакцію</button>
+        <button onclick="location.href='/users/user_extract'">Зробити виписку</button>
+        <button onclick="location.href='{% url 'delete_account' %}'">Видалити акаунт</button>
+        <button onclick="location.href='/users/userreg/'">Вийти в головне меню</button>
+    </div>
+</body>
+</html>

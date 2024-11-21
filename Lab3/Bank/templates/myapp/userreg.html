@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+</head>
+<body>
+    <h1>Реєстрація</h1>
+    <!-- Форма реєстрації -->
+    <form method="post" action="{% url 'insertuser' %}">
+        {% csrf_token %}
+        <label for="tuid">ID:</label>
+        <input type="text" id="tuid" name="tuid" required><br>
+        <label for="tuname">Ім'я:</label>
+        <input type="text" id="tuname" name="tuname" required><br>
+        <label for="tuemail">Email:</label>
+        <input type="email" id="tuemail" name="tuemail" required><br>
+        <label for="tucontact">Контакт:</label>
+        <input type="text" id="tucontact" name="tucontact" required><br>
+        <label for="tudoc">Документ:</label>
+        <input type="text" id="tudoc" name="tudoc" required><br>
+        <label for="tupass">Пароль:</label>
+        <input type="password" id="tupass" name="tupass" required><br>
+        <label for="tums">Прізвище матері:</label>
+        <input type="text" id="tums" name="tums" required><br>
+        <button type="submit">Зареєструватись</button>
+    </form>
+
+    <!-- Кнопка входу -->
+    <button onclick="location.href='{% url 'userlog' %}'">Увійти</button>
+</body>
+</html>

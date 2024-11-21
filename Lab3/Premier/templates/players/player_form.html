@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Player</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    {% block header %}
+    <header>
+        <h1>Add Player</h1>
+    </header>
+    {% endblock %}
+
+    {% block content %}
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Player</button>
+        </form>
+
+        <p>
+            <a href="{% url 'player_list' %}">Back to Player List</a>
+        </p>
+    </main>
+    {% endblock %}
+
+    {% block footer %}
+    <footer>
+        <p>&copy; 2024 My Football App</p>
+    </footer>
+    {% endblock %}
+</body>
+</html>

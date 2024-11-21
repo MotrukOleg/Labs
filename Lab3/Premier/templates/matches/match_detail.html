@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Match Information{% endblock %}
+
+{% block content %}
+<h2>{{ match.home_team }} vs. {{ match.away_team }} <a href="{% url 'match_update' match.match_id %}">Edit</a></h2>
+<ul>
+    <li><b>Home team:</b> {{ match.home_team }}</li>
+    <li><b>Away team:</b> {{ match.away_team }}</li>
+    <li><b>Match date:</b> {{ match.date }}</li>
+    <li><b>Home team goals:</b> {{match.home_team_goals}}</li>
+    <li><b>Away team goals:</b> {{ match.away_team_goals}}</li>
+    <li><b>Stadium:</b> {{ match.stadium }}</li>
+</ul>
+
+<a class="back-link" href="{% url 'match_list.html' %}">Back to Match List</a>
+{% endblock %}

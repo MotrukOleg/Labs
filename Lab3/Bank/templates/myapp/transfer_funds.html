@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Переказ коштів</title>
+</head>
+<body>
+    <h1>Переказ коштів</h1>
+    <form method="post" action="{% url 'transfer_funds' sender_id=request.session.user_id %}">
+        {% csrf_token %}
+        
+        <label for="receiver_id">ID отримувача:</label>
+        <input type="number" id="receiver_id" name="receiver_id" required><br>
+
+        <label for="transfer_amount">Сума переказу:</label>
+        <input type="number" id="transfer_amount" name="transfer_amount" step="0.01" required><br>
+
+        <label>Комісія:</label><br>
+        <input type="radio" id="sender_pays" name="choice" value="1" checked>
+        <label for="sender_pays">Платить відправник</label><br>
+        <input type="radio" id="receiver_pays" name="choice" value="0">
+        <label for="receiver_pays">Платить отримувач</label><br>
+
+        <button type="submit">Переказати</button>
+    </form>
+</body>
+</html>

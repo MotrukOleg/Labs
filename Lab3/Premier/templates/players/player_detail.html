@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{ player.player_name }} - Player Information{% endblock %}
+
+{% block content %}
+<h2>{{ player.name }} <a href="{% url 'player_update' player.player_id %}">Edit</a></h2>
+<ul>
+    <li><b>Player ID:</b> {{ player.player_id }}</li>
+    <li><b>Player Name:</b> {{ player.player_name }}</li>
+    <li><b>Date of Birth:</b> {{ player.date_of_birth }}</li>
+    <li><b>Place of Birth:</b> {{ player.place_of_birth }}</li>
+    <li><b>Height:</b> {{ player.height }} cm</li>
+    <li><b>Nationality:</b> {{ player.nationality }}</li>
+    <li><b>Position:</b> {{ player.position }}</li>
+    <li><b>Current Club:</b> {{ player.current_club }}</li>
+    <li><b>Contract Start Date:</b> {{ player.sign_contract_date }}</li>
+    <li><b>Contract Expiration Date:</b> {{ player.contract_expired }}</li>
+</ul>
+
+<a class="back-link" href="{% url 'player_list' %}">Back to Player List</a>
+{% endblock %}

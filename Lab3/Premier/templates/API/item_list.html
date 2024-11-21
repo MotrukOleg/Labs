@@ -1,0 +1,73 @@
+<!-- yourapp/templates/yourapp/item_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        /* Стилі для таблиці */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Item List</h1>
+
+    <!-- Таблиця для відображення елементів -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Terms of Use</th>
+                <th>Mother Surname</th>
+                <th>Money Left</th>
+                <th>User Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <!-- Виведення значень для кожного елемента -->
+                <td>{{ item.ID }}</td>
+                <td>{{ item.Terms_Of_Use }}</td>
+                <td>{{ item.Mother_Surname }}</td>
+                <td>{{ item.Money_Left }}</td>
+                <td>{{ item.User_Created }}</td>
+
+                <!-- Форма для видалення елемента -->
+                <td>
+                <form action="{% url 'delete_item' item.ID %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

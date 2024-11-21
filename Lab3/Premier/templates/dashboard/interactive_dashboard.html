@@ -1,0 +1,63 @@
+{% load plotly_dash %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats Dashboard</title>
+    <style>
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #3a3a3a;
+            margin-bottom: 20px;
+        }
+
+        #dash-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        #dash-container > div {
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            #dash-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Football Player Stats Dashboard</h1>
+    <div id="dash-container">
+        {% plotly_app name = "premier_django.views_interactive" %}
+        {{ graph|safe }}
+    </div>
+    {% plotly_app name = "premier_django.views_interactive" %}
+
+</body>
+</html>

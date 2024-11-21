@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Виписка користувача</title>
+</head>
+<body>
+    <center>
+        <table class="table table-striped table-bordered table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Time Started</th>
+                    <th>Money Used</th>
+                    <th>Operation Type</th>
+                    <th>Balance Before Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trans in operation_details %}
+                <tr>
+                    <td>{{ trans.Time_started }}</td>
+                    <td>{{ trans.Money_Used }}</td>
+                    <td>{{ trans.Operation_Type }}</td>
+                    <td>{{ trans.Balance_Before_Operation}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+</body>
+</html>

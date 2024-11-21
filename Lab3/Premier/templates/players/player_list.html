@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Players{% endblock %}
+
+{% block content %}
+<h1>Players</h1>
+<a href="{% url 'player_create' %}">Add New Player</a>
+
+<br>
+<h2>Player List:</h2>
+<ul>
+    {% for player in players %}
+        <li>
+            {{ player.player_name }} -
+            <a href="{% url 'player_detail' player.player_id %}">Details</a>
+            <a href="{% url 'player_delete' player.player_id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No players found.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

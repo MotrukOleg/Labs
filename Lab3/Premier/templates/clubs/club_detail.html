@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Information</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Club Information</h1>
+        <h2>{{ club.name }} <a href="{% url 'club_update' club.club_id %}">Edit</a></h2>
+    </header>
+
+    <main>
+        <ul>
+            <li><b>Club ID:</b> {{ club.club_id }}</li>
+            <li><b>Club City:</b> {{ club.city }}</li>
+            <li><b>Club Address:</b> {{ club.adress }}</li> <!-- Fixed the spelling of "Address" -->
+            <li><b>Club Founded:</b> {{ club.founded }}</li>
+            <li><b>Club Tel:</b> {{ club.tel }}</li>
+            <li><b>Club Fax:</b> {{ club.fax }}</li>
+            <li><b>Club Website:</b> <a href="{{ club.website }}" target="_blank">{{ club.website }}</a></li> <!-- Added target="_blank" for external link -->
+            <li><b>Club Coach:</b> {{ club.coach }}</li>
+        </ul>
+
+        <p>
+            <a href="{% url 'club_list' %}">Back to Club List</a>
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Football App</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Clubs{% endblock %}
+{% block content %}
+<h2>Club List:</h2>
+<ul>
+    {% for club in clubs %}
+        <li>
+            {{ club.name }} -
+            {% if club.club_id %}
+                <a href="{% url 'club_detail' club.club_id %}">Details</a>
+                <a href="{% url 'club_delete' club.club_id %}">Delete</a>
+            {% else %}
+                No ID available for editing
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to home</a>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2024 My Football App</p>
+</footer>
+{% endblock %}
